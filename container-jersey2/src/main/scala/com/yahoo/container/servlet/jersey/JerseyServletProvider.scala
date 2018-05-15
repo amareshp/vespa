@@ -6,7 +6,6 @@ import java.io.{IOException, InputStream}
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
-import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider
 import com.yahoo.container.di.componentgraph.Provider
 import com.yahoo.container.di.config.RestApiContext
 import com.yahoo.container.di.config.RestApiContext.BundleInfo
@@ -16,6 +15,13 @@ import org.eclipse.jetty.servlet.ServletHolder
 import org.glassfish.hk2.api.{InjectionResolver, TypeLiteral}
 import org.glassfish.hk2.utilities.Binder
 import org.glassfish.hk2.utilities.binding.AbstractBinder
+
+/* Despite its name, this package is exported from jersey-media-json-jackson.
+ * Probably more like 'repackaged' than 'internal'.
+ * See also https://github.com/jersey/jersey/commit/2314a6c98b52c8c5da6995dd12ad539c3434f526
+ */
+import org.glassfish.jersey.jackson.internal.jackson.jaxrs.json.JacksonJaxbJsonProvider
+
 import org.glassfish.jersey.media.multipart.MultiPartFeature
 import org.glassfish.jersey.server.ResourceConfig
 import org.glassfish.jersey.servlet.ServletContainer
